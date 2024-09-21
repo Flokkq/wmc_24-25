@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [0.1.3](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/compare/v0.1.2..v0.1.3) - 2024-09-21
+
+
+
+
+### Chore
+
+- *(release)* Prepare for v0.1.3 - ([12981b2](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/12981b27a2cc0d04f04f25deece67d4cc6701370))
+
+
 ## [0.1.2](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/compare/v0.1.0..v0.1.2) - 2024-09-21
 
 

@@ -3,7 +3,7 @@ name: Generate Changelog
 on:
   push:
     tags:
-      - "v*.*.*"  # Trigger on version tag pushes
+      - "v*.*.*"  
 
 jobs:
   generate-changelog:
@@ -38,3 +38,5 @@ jobs:
           body: ${{ steps.git-cliff.outputs.content }}
           draft: false
           prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}  

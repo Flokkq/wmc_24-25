@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import IWorkout, { WorkoutCategory } from "../models/IWorkout";
+import { IWorkout, WorkoutCategory } from "../models/IWorkout";
 
 const initialWorkouts: IWorkout[] = [
   {

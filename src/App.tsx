@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import NotFound from "./view/NotFound";
-import WorkoutDashboard from "./view/WorkoutDashboard";
+import WorkoutDashboard from "./view/dashboard/WorkoutDashboard";
 import Layout from "./view/Layout";
 import Home from "./view/Home";
 

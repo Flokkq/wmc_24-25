@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { IWorkout } from "../models/IWorkout";
+import React, { useState } from "react";
+import { IWorkout } from "../../models/IWorkout";
+import WorkoutDetail from "./DashboardDetail";
 
 const initialWorkouts: IWorkout[] = [
   {
@@ -27,16 +28,8 @@ const initialWorkouts: IWorkout[] = [
     name: "Phelps",
     heartFrequencies: [125, 140, 150, 165],
   },
-  {
-    category: "running",
-    name: "Bolt",
-    heartFrequencies: [130, 150, 160, 175],
-  },
-  {
-    category: "running",
-    name: "Bolt",
-    heartFrequencies: [140, 160, 170, 185],
-  },
+  { category: "running", name: "Bolt", heartFrequencies: [130, 150, 160, 175] },
+  { category: "running", name: "Bolt", heartFrequencies: [140, 160, 170, 185] },
   {
     category: "running",
     name: "Melli",
@@ -58,12 +51,36 @@ const WorkoutDashboard: React.FC = () => {
   const [workouts, setWorkouts] = useState<IWorkout[]>(initialWorkouts);
   const [selectedWorkout, setSelectedWorkout] = useState<IWorkout | null>(null);
 
+  // Function to select a workout
   const handleSelectWorkout = (workout: IWorkout) => {
     setSelectedWorkout(workout);
   };
 
-  const handleClearSelection = () => {
-    setSelectedWorkout(null);
+  // Function to add a random heart frequency to the selected workout
+  const handleAddRandomHeartFrequency = () => {
+    if (selectedWorkout) {
+      const randomFrequency = Math.floor(Math.random() * (190 - 130 + 1)) + 130;
+      const updatedWorkout = {
+        ...selectedWorkout,
+        heartFrequencies: [
+          ...selectedWorkout.heartFrequencies,
+          randomFrequency,
+        ],
+      };
+
+      // Update the workouts state with the modified workout
+      setWorkouts((prevWorkouts) =>
+        prevWorkouts.map((workout) =>
+          workout.name === updatedWorkout.name &&
+          workout.category === updatedWorkout.category
+            ? updatedWorkout
+            : workout,
+        ),
+      );
+
+      // Update the selectedWorkout state with the modified workout
+      setSelectedWorkout(updatedWorkout);
+    }
   };
 
   return (
@@ -107,25 +124,10 @@ const WorkoutDashboard: React.FC = () => {
       </table>
 
       {selectedWorkout && (
-        <div className="mt-6">
-          <h2 className="text-2xl font-bold mb-4">Workout Details</h2>
-          <p>
-            <strong>Name:</strong> {selectedWorkout.name}
-          </p>
-          <p>
-            <strong>Category:</strong> {selectedWorkout.category}
-          </p>
-          <p>
-            <strong>Heart Frequencies:</strong>{" "}
-            {selectedWorkout.heartFrequencies.join(", ")}
-          </p>
-          <button
-            onClick={handleClearSelection}
-            className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
-          >
-            Clear Selection.
-          </button>
-        </div>
+        <WorkoutDetail
+          workout={selectedWorkout}
+          onAddHeartFrequency={handleAddRandomHeartFrequency}
+        />
       )}
     </div>
   );

@@ -17,6 +17,7 @@
           devShells.default = pkgs.mkShell {
             nativeBuildInputs = [
                 pkgs.git-cliff
+                pkgs.gnupg
             ];
           };
         }

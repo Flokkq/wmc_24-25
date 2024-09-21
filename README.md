@@ -41,7 +41,7 @@ To maintain a consistent and meaningful commit history, adhere to the following 
 Releasing a new assignment version is straightforward. Follow these steps to create a new release:
 
 ```bash
-    ./release.sh
+    ./release.sh vx.y.z-assignmentName
     git push && git push --tags
 ```
 

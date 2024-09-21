@@ -35,13 +35,13 @@ jobs:
         run: echo "${{ steps.git-cliff.outputs.content }}"
 
       - name: Create GitHub Release
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}  
         with:
-          token: GITHUB_TOKEN
           tag_name: ${{ github.ref }}
           release_name: "Release ${{ github.ref }}"
           body: ${{ steps.git-cliff.outputs.content }}
           draft: false
           prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}  
+          token: GH_PAT

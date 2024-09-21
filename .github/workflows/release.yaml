@@ -36,12 +36,10 @@ jobs:
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}  
         with:
           tag_name: ${{ github.ref }}
           release_name: "Release ${{ github.ref }}"
           body: ${{ steps.git-cliff.outputs.content }}
           draft: false
           prerelease: false
-          token: GH_PAT
+          token: ${{ secrets.GH_PAT }}

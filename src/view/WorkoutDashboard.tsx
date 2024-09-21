@@ -1,54 +1,54 @@
 import React, { useState, useEffect } from "react";
-import { IWorkout, WorkoutCategory } from "../models/IWorkout";
+import { IWorkout } from "../models/IWorkout";
 
 const initialWorkouts: IWorkout[] = [
   {
-    category: WorkoutCategory.Running,
+    category: "running",
     name: "Yates",
     heartFrequencies: [130, 150, 160, 175],
   },
   {
-    category: WorkoutCategory.Cycling,
+    category: "cycling",
     name: "Yates",
     heartFrequencies: [145, 155, 165, 180],
   },
   {
-    category: WorkoutCategory.Cycling,
+    category: "cycling",
     name: "Yates",
     heartFrequencies: [135, 145, 155, 170],
   },
   {
-    category: WorkoutCategory.Swimming,
+    category: "swimming",
     name: "Phelps",
     heartFrequencies: [140, 160, 170, 185],
   },
   {
-    category: WorkoutCategory.Swimming,
+    category: "swimming",
     name: "Phelps",
     heartFrequencies: [125, 140, 150, 165],
   },
   {
-    category: WorkoutCategory.Running,
+    category: "running",
     name: "Bolt",
     heartFrequencies: [130, 150, 160, 175],
   },
   {
-    category: WorkoutCategory.Running,
+    category: "running",
     name: "Bolt",
     heartFrequencies: [140, 160, 170, 185],
   },
   {
-    category: WorkoutCategory.Running,
+    category: "running",
     name: "Melli",
     heartFrequencies: [135, 145, 155, 170],
   },
   {
-    category: WorkoutCategory.Cycling,
+    category: "cycling",
     name: "Renshaw",
     heartFrequencies: [130, 150, 160, 175],
   },
   {
-    category: WorkoutCategory.Cycling,
+    category: "cycling",
     name: "Renshaw",
     heartFrequencies: [145, 155, 165, 180],
   },

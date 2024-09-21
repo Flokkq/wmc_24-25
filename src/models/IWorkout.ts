@@ -1,4 +1,4 @@
-export enum WorkoutCategory {
+enum WorkoutCategory {
   Running = "running",
   Cycling = "cycling",
   Swimming = "swimming",
@@ -6,6 +6,6 @@ export enum WorkoutCategory {
 
 export interface IWorkout {
   name: string;
-  category: WorkoutCategory;
+  category: string;
   heartFrequencies: number[];
 }

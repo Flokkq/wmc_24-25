@@ -56,8 +56,8 @@ commit_parsers = [
   { message = "^refactor", group = "🚜 Refactoring" },
   { message = "^init", group = "🎉 Initial Commit" },
   { message = "^style", group = "🎨 Styling" },
-  { message = "^revert", group = "↩️ Reverts" }
-  { message = "^chore", group = "🔧Chores" }
+  { message = "^revert", group = "↩️ Reverts" },
+  { message = "^chore", group = "🔧Chores" },
 ]
 
 tag_pattern = "v[0-9].*"

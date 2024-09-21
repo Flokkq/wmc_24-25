@@ -1,0 +1,15 @@
+info: Opening plain database via sqlite backend.
+warning: sqlite database already exists. Set your database backend to sqlite
+error: Could not determine file type.
+info: Opening plain database via sqlite backend.
+warning: sqlite database already exists. Set your database backend to sqlite
+info: Opening plain database via sqlite backend.
+warning: sqlite database already exists. Set your database backend to sqlite
+Fontconfig error: Cannot load default config file: No such file: (null)
+c11:06:48 - Starting compilation in watch mode...
+
+error TS6231: Could not resolve the path '' with the extensions: '.ts', '.tsx', '.d.ts', '.cts', '.d.cts', '.mts', '.d.mts'.
+  The file is in the program because:
+    Root file specified for compilation
+
+11:06:49 - Found 1 error. Watching for file changes.

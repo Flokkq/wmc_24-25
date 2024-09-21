@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [0.1.2](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/compare/v0.1.0..v0.1.2) - 2024-09-21
+
+
+
+
+### Chore
+
+- *(git-cliff)* Provide auth for workflow - ([b9ef698](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/b9ef698aeb9fedb97abb8ef620817f6d0d6b3b82))
+
+
 ## [0.1.0] - 2024-09-21
 
 
@@ -8,6 +18,7 @@
 
 ### Chore
 
+- *(release)* Prepare for v0.1.0 - ([869ca4a](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/869ca4a61098361736cb42fe1a443fea16bf3441))
 - *(git-cliff)* Add gpg to sign tags - ([7afffc6](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/7afffc69c1b9ef2b16ca19fc3dc3285980a91f73))
 - *(git-cliff)* Add workflow to create github release - ([b845e5f](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/b845e5fc33d59395eef037d0d6c0d400c9974e5b))
 - *(git-cliff)* Add release script - ([f935f82](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/f935f82fec9cf4119efb19fb050ff55896195fc6))

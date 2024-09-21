@@ -8,6 +8,7 @@
 
 ### Chore
 
+- *(release)* Prepare for v0.1.2 - ([9b724f3](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/9b724f3553e892ef52bfd0e1ffdb8de4cb903f16))
 - *(git-cliff)* Provide auth for workflow - ([b9ef698](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/b9ef698aeb9fedb97abb8ef620817f6d0d6b3b82))
 
 

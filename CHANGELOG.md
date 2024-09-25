@@ -1,5 +1,38 @@
 # Changelog
 
+
+## [1.2.0-cards](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/compare/v1.1.0-intro..v1.2.0-cards) - 2024-09-25
+
+
+
+
+### ✨ Features
+
+- *(cards)* Demo for passing down functions and elements in react - ([eeb84b8](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/eeb84b828f2658a4d2b9c702564030e14d1f4e3e))
+
+### 🐛 Bug Fixes
+
+- *(repo)* Fix syntax error in cliff config - ([9237f71](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/9237f71510e70d03c86945b2b16297b5cd24e143))
+
+### 🚜 Refactoring
+
+- *(repo)* Prefix assignments with indeces - ([d9332e4](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/d9332e48f30bb2c918a40e5889fbb3b4602f877d))
+
+
+## [1.1.0-intro](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/compare/v1.0.0..v1.1.0-intro) - 2024-09-21
+
+
+
+
+### 🔧Chores
+
+- *(repo)* Update README - ([b9c5a73](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/b9c5a73fd26e217086e731a4ac4052de62f7d2db))
+
+### 🚜 Refactoring
+
+- *(intro)* Remove unwanted files - ([9e68ccb](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/9e68ccb11dca1320b26496c4cbbbd0a900da5dfa))
+
+
 ## [1.0.0](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/compare/v0.1.7..v1.0.0) - 2024-09-21
 
 

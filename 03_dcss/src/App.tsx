@@ -1,97 +1,127 @@
 import AppHeader from "./common/components/app-header/AppHeader";
-import { useStyles } from "./App.styles.ts";
-import { Alert, Grid2, Slide, Snackbar } from "@mui/material";
-import { useEffect, useState } from "react";
+import {useStyles} from "./App.styles.ts";
+import {Alert, Grid2, Slide, Snackbar} from "@mui/material";
+import {genresMockData, moviesMockData} from "./common/mock-data";
+import {useState} from "react";
+import {Movie} from "./common/models/movie.model.ts";
 import MovieOverview from "./views/movie-overview/MovieOverview.tsx";
+import {ReactNode} from "react"
 import MovieDetails from "./views/movie-details/MovieDetails.tsx";
-import { moviesMockData } from "./common/mock-data.ts";
-import { Movie } from "./common/models/movie.model.ts";
+
+
 
 export enum AppViews {
   MovieOverview = 1,
-  MovieDetails,
+  MovieDetails
 }
 
 function App() {
-  const { classes } = useStyles();
-  const [selectedView, setSelectedView] = useState(AppViews.MovieOverview);
-  const [isSnackBarOpen, setIsSnackBarOpen] = useState(true);
-  const [movies, setMovies] = useState(moviesMockData);
-  const [selectedMovie, setSelectedMovie] = useState<Movie | undefined>(
-    undefined,
-  );
+    const [movies, setMovies] = useState<Movie[]>(moviesMockData);
+    const { classes } = useStyles();
+    const [selectedView, setSelectedView] = useState(AppViews.MovieOverview)
 
-  const handleDeleteMovie = (id: number): void => {
-    const updated = movies.filter((m) => m.id != id);
-    setMovies(updated);
-  };
+    const [selectedMovie, setSelectedMovie] = useState<Movie | undefined>(undefined)
 
-  const handleOpenDetails = (movie?: Movie): void => {
-    if (movie != null) {
-      setSelectedMovie(movie);
+    const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
+    /* lifted Funktions */
+    const handleDeleteMovie = (id: number): void => {
+        const updated = movies.filter(movie => movie.id !== id)
+        setMovies(updated)
     }
 
-    setSelectedView(AppViews.MovieDetails);
-  };
+    const handleOpenDetails = (movie?: Movie): void => {
+        if (movie != null) {
+            setSelectedMovie(movie)
+        }
 
-  const handleBackToOverview = (): void => {
-    setSelectedMovie(undefined);
-    setSelectedView(AppViews.MovieOverview);
-  };
-
-  const handleSave = (movie: Movie): void => {
-    let newMovies: Movie[] = [];
-
-    if (movie.id == null) {
-      const id = Number(Math.random().toString().slice(2));
-      newMovies = [...movies, { ...movie, id: id }];
-    } else {
-      newMovies = movies.map((m) => (m.id === movie.id ? { ...movie } : m));
+        setSelectedView(AppViews.MovieDetails)
     }
 
-    setMovies(newMovies);
-    handleBackToOverview();
-    setIsSnackBarOpen(true);
-  };
-
-  const renderSelectedView = () => {
-    switch (selectedView) {
-      case AppViews.MovieOverview:
-        return (
-          <MovieOverview
-            movies={movies}
-            onChange={(updated) => setMovies(updated)}
-            onDelete={handleDeleteMovie}
-            onOpenDetails={handleOpenDetails}
-          />
-        );
-      case AppViews.MovieDetails:
-        return (
-          <MovieDetails onSave={handleSave} onCancel={handleBackToOverview} />
-        );
+    const handleBackToOverview = (): void => {
+        setSelectedMovie(undefined)
+        setSelectedView(AppViews.MovieOverview)
+        setIsSnackbarOpen(true)
     }
-  };
 
-  return (
-    <Grid2
-      className={classes.root}
-      container
-      direction={"column"}
-      alignItems={"center"}
-    >
-      <Snackbar
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        autoHideDuration={3000}
-        TransitionComponent={Slide}
-        open={isSnackBarOpen}
-        onClose={() => setIsSnackBarOpen(false)}
-      >
-        <Alert onClose={() => setIsSnackBarOpen(false)} severity="info">
-          Movie saved
-        </Alert>
-      </Snackbar>
-      <AppHeader onClick={handleBackToOverview} />
-      <div className={classes.content}>{renderSelectedView()}</div>
+    const handleSaveMovie = (updatedMovie: Movie): void => {
+        console.log(updatedMovie);
+        let updatedMovies
+
+        if (updatedMovie.id == null) {
+            const id = Number(Math.random().toString().slice(2))
+            updatedMovies = [...movies, {...updatedMovie, id}]
+        } else {
+            updatedMovies = [...movies].map(movie => {
+                if (movie.id === updatedMovie.id) {
+                    return {...updatedMovie}
+                }
+                return movie
+            })
+        }
+
+        setMovies(updatedMovies)
+        handleBackToOverview()
+        //setIsSnackbarOpen(true)
+    }
+
+    const renderSelectedViews = (): ReactNode => {
+        switch (selectedView) {
+            case AppViews.MovieOverview:
+                return (
+                    <>
+                    <h1>Movies</h1>
+                    <MovieOverview movies={movies}
+                                   onChange={(updated) => {
+                                       setMovies(updated)
+                                   }}
+                                   onDeleteMovie={handleDeleteMovie}
+                                   onOpenDetails={handleOpenDetails}
+                    />
+                    </>
+                        )
+            case AppViews.MovieDetails:
+                return (
+                    <>  {console.log("bin in Details")}
+                        <MovieDetails
+                            movie={selectedMovie}
+                            genres={genresMockData}
+                            onSave={handleSaveMovie}
+                            onCancel={handleBackToOverview}
+                        />
+                    </>
+                )
+
+        }
+    }
+
+
+
+    return (
+
+    <Grid2 className={classes.root} container direction={"column"} alignItems={"center"}>
+
+        <Snackbar
+            anchorOrigin={{ vertical: "top", horizontal: "center"}}
+            open={isSnackbarOpen}
+            autoHideDuration={3000}
+            TransitionComponent={Slide}
+            onClose={() => setIsSnackbarOpen(false)}
+        >
+            <Alert
+                onClose={() => setIsSnackbarOpen(false)}
+                severity="success"
+                variant="filled"
+                sx={{ width: '100%' }}
+            >
+                Movie successfully saved
+            </Alert>
+        </Snackbar>
+
+
+        <AppHeader onclick={handleBackToOverview}/>
+      <div className={classes.content}>
+          {renderSelectedViews()}
+      </div>
     </Grid2>
   );
 }

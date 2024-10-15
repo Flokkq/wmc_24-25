@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [1.3.1-dcss](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/compare/v1.3.0-dcss..v1.3.1-dcss) - 2024-10-15
+
+
+
+
+### ✨ Features
+
+- *(dcss)* Update template - ([807e09d](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/807e09d6b2a882a65d1f273209d846a0ba1860f8))
+
+
 ## [1.3.0-dcss](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/compare/v1.2.0-cards..v1.3.0-dcss) - 2024-10-15
 
 
@@ -9,6 +19,10 @@
 ### ✨ Features
 
 - *(dcss)* Add dcss template - ([e32f36b](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/e32f36b74c685a5d18a2124939539c20c5aa0a7a))
+
+### 🔧Chores
+
+- *(release)* Prepare for v1.3.0-dcss - ([5c35387](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/5c353878f9a1edc6af069f5e469d289c74587c82))
 
 
 ## [1.2.0-cards](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/compare/v1.1.0-intro..v1.2.0-cards) - 2024-09-25

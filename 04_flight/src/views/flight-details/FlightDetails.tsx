@@ -179,4 +179,3 @@ const FlightDetails: React.FC<FlightDetailsProps> = ({
 };
 
 export default FlightDetails;
-

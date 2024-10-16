@@ -49,10 +49,14 @@ const FlightOverview: React.FC = (props: FlightOverviewProps) => {
           padding={"10px 20px"}
           fontWeight={"bold"}
         >
-          <Grid2 direction={"column"} width={"40px"} />
-          <Grid2 direction={"column"} width={"40px"} />
-          <Grid2 direction={"column"} width={"400px"}>
+          <Grid2 direction={"column"} width={"200px"}>
             Title
+          </Grid2>
+          <Grid2 direction={"column"} width={"100px"}>
+            Type
+          </Grid2>
+          <Grid2 direction={"column"} width={"70px"}>
+            Duration
           </Grid2>
           <Grid2 direction={"column"} width={"40px"} />
         </Grid2>

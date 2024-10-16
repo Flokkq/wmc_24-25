@@ -32,8 +32,14 @@ const FlightListItem: React.FC = (props: FlightListItemProps) => {
         onEditFlight();
       }}
     >
-      <Grid2 direction={"column"} width={"400px"}>
+      <Grid2 direction={"column"} width={"200px"}>
         <span>{`${orderNr}. ${flight.flightNumber}`}</span>
+      </Grid2>
+      <Grid2 direction={"column"} width={"100px"}>
+        <span>{`${flight.type?.name}`}</span>
+      </Grid2>
+      <Grid2 direction={"column"} width={"50px"}>
+        <span>{`${flight.duration}`}</span>
       </Grid2>
       <Grid2 direction={"column"} width={"40px"}>
         <span
@@ -51,4 +57,3 @@ const FlightListItem: React.FC = (props: FlightListItemProps) => {
 };
 
 export default FlightListItem;
-

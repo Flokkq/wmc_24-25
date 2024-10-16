@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [1.4.0-flight](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/compare/v1.3.1-dcss..v1.4.0-flight) - 2024-10-16
+
+
+
+
+### ✨ Features
+
+- *(flight)* Add overview grid - ([3632661](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/3632661fbb6a3bd82700a817e7f32697939261d3))
+
+### 🚜 Refactoring
+
+- *(flight)* Refactor from movie to workout app - ([378a687](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/378a687d5224755b7f32fef7f775b4e8c0a2ea68))
+
+
 ## [1.3.1-dcss](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/compare/v1.3.0-dcss..v1.3.1-dcss) - 2024-10-15
 
 
@@ -9,6 +23,10 @@
 ### ✨ Features
 
 - *(dcss)* Update template - ([807e09d](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/807e09d6b2a882a65d1f273209d846a0ba1860f8))
+
+### 🔧Chores
+
+- *(release)* Prepare for v1.3.1-dcss - ([3e546e5](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/3e546e59b8fcf0800b12552c65d1751cc70065a1))
 
 
 ## [1.3.0-dcss](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/compare/v1.2.0-cards..v1.3.0-dcss) - 2024-10-15

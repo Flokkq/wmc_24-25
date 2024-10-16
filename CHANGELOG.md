@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [1.4.1-flight](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/compare/v1.4.0-flight..v1.4.1-flight) - 2024-10-16
+
+
+
+
+### ✨ Features
+
+- *(flight)* Add more information to detail view - ([c43014f](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/c43014f374e1852118ffde7a68e68906ffa499ab))
+
+
 ## [1.4.0-flight](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/compare/v1.3.1-dcss..v1.4.0-flight) - 2024-10-16
 
 
@@ -9,6 +19,10 @@
 ### ✨ Features
 
 - *(flight)* Add overview grid - ([3632661](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/3632661fbb6a3bd82700a817e7f32697939261d3))
+
+### 🔧Chores
+
+- *(release)* Prepare for v1.4.0-flight - ([3d46739](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/3d4673976583e0f0ae2c7d1596e4cac408485f08))
 
 ### 🚜 Refactoring
 

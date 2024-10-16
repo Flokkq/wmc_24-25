@@ -1,31 +1,49 @@
 import AppHeader from "./common/components/app-header/AppHeader";
-import { useStyles } from "./App.styles.ts";
-import { Alert, Grid2, Slide, Snackbar } from "@mui/material";
-import { typesMockData, flightsMockData } from "./common/mock-data";
+import { useStyles } from "./App.styles";
+import { Alert, Grid as Grid2, Slide, Snackbar } from "@mui/material";
+import {
+  typesMockData,
+  flightsMockData,
+  pilotsMockData,
+} from "./common/mock-data";
 import { useState } from "react";
-import { Flight } from "./common/models/workout.model.ts";
-import FlightOverview from "./views/flight-overview/FlightOverview.tsx";
-import { ReactNode } from "react";
-import FlightDetails from "./views/flight-details/FlightDetails.tsx";
+import { Flight } from "./common/models/workout.model";
+import { Pilot } from "./common/models/pilot.model";
+import PilotGrid from "./views/pilot-grid/PilotGrid";
+import FlightOverview from "./views/flight-overview/FlightOverview";
+import FlightDetails from "./views/flight-details/FlightDetails";
 
 export enum AppViews {
-  FlightOverview = 1,
+  Pilots = 1,
+  FlightOverview,
   FlightDetails,
 }
 
 function App() {
   const [flights, setFlights] = useState<Flight[]>(flightsMockData);
+  const [pilots, setPilots] = useState<Pilot[]>(pilotsMockData); // Add pilots data
   const { classes } = useStyles();
-  const [selectedView, setSelectedView] = useState(AppViews.FlightOverview);
+  const [selectedView, setSelectedView] = useState(AppViews.Pilots);
 
   const [selectedFlight, setSelectedFlight] = useState<Flight | undefined>(
     undefined,
   );
 
+  const [selectedPilot, setSelectedPilot] = useState<Pilot | undefined>(
+    undefined,
+  );
+
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
+
   /* lifted Funktions */
-  const handleDeleteFlight = (id: number): void => {
-    const updated = flights.filter((flight) => flight.id !== id);
+  const handleSelectPilot = (pilot: Pilot): void => {
+    setSelectedPilot(pilot);
+    setFlights(pilot.workouts);
+    setSelectedView(AppViews.FlightOverview);
+  };
+
+  const handleDeleteFlight = (id: string): void => {
+    const updated = flights.filter((flight) => flight.flightNumber !== id);
     setFlights(updated);
   };
 
@@ -39,20 +57,19 @@ function App() {
 
   const handleBackToOverview = (): void => {
     setSelectedFlight(undefined);
-    setSelectedView(AppViews.FlightOverview);
+    setSelectedView(AppViews.Pilots);
     setIsSnackbarOpen(true);
   };
 
   const handleSaveFlight = (updatedFlight: Flight): void => {
-    console.log(updatedFlight);
     let updatedFlights;
 
-    if (updatedFlight.id == null) {
-      const id = Number(Math.random().toString().slice(2));
-      updatedFlights = [...flights, { ...updatedFlight, id }];
+    if (updatedFlight.flightNumber == null) {
+      const flightNumber = Number(Math.random().toString().slice(2)).toString();
+      updatedFlights = [...flights, { ...updatedFlight, flightNumber }];
     } else {
       updatedFlights = [...flights].map((flight) => {
-        if (flight.id === updatedFlight.id) {
+        if (flight.flightNumber === updatedFlight.flightNumber) {
           return { ...updatedFlight };
         }
         return flight;
@@ -61,11 +78,12 @@ function App() {
 
     setFlights(updatedFlights);
     handleBackToOverview();
-    //setIsSnackbarOpen(true)
   };
 
-  const renderSelectedViews = (): ReactNode => {
+  const renderSelectedViews = (): React.ReactNode => {
     switch (selectedView) {
+      case AppViews.Pilots:
+        return <PilotGrid pilots={pilots} onSelectPilot={handleSelectPilot} />;
       case AppViews.FlightOverview:
         return (
           <>
@@ -83,8 +101,6 @@ function App() {
       case AppViews.FlightDetails:
         return (
           <>
-            {" "}
-            {console.log("bin in Details")}
             <FlightDetails
               flight={selectedFlight}
               genres={typesMockData}

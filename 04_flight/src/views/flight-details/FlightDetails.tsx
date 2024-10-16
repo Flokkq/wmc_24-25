@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Flight } from "../../common/models/flight.model";
-import { Genre } from "../../common/models/genre.model";
+import { Flight } from "../../common/models/workout.model";
+import { WorkoutType } from "../../common/models/workout_type.model";
 import {
   Button,
   Dialog,
@@ -8,7 +8,7 @@ import {
   DialogContent,
   DialogTitle,
   FormControl,
-  Grid2,
+  Grid as Grid2,
   InputLabel,
   MenuItem,
   Select,
@@ -18,17 +18,16 @@ import { useStyles } from "./FlightDetails.styles.ts";
 
 interface FlightDetailsProps {
   flight?: Flight;
-  genres: Genre[];
+  genres: WorkoutType[];
   onSave: (flight: Flight) => void;
   onCancel: () => void;
 }
 
 const initialFlight: Flight = {
-  title: "",
-  description: "",
-  imageUrl: "",
-  isFavorite: false,
-  isWatched: false,
+  flightNumber: "",
+  type: undefined,
+  duration: 0,
+  isCompleted: false,
 };
 
 const FlightDetails: React.FC<FlightDetailsProps> = ({
@@ -38,40 +37,30 @@ const FlightDetails: React.FC<FlightDetailsProps> = ({
   onCancel,
 }) => {
   const [formData, setFormData] = useState<Flight>(flight ?? initialFlight);
-  const { id, title, genre, description, imageUrl, year } = formData;
+  const { flightNumber, type, duration, isCompleted } = formData;
   const { classes } = useStyles();
 
   const [isCancelDialogOpen, setIsCancelDialogOpen] = useState(false);
 
-  const handleTitleChange = (value: string): void => {
-    setFormData({ ...formData, title: value });
+  const handleFlightNumberChange = (value: string): void => {
+    setFormData({ ...formData, flightNumber: value });
   };
 
-  const handleDescriptionChange = (value: string): void => {
-    setFormData({ ...formData, description: value });
+  const handleDurationChange = (value: number): void => {
+    setFormData({ ...formData, duration: value });
   };
 
-  const handleYearChange = (value: number): void => {
-    setFormData({ ...formData, year: value });
+  const handleTypeChange = (typeId: number): void => {
+    const selectedType = genres.find((g) => g.id === typeId);
+    setFormData({ ...formData, type: selectedType });
   };
 
-  const handleImageUrlChange = (value: string): void => {
-    setFormData({ ...formData, imageUrl: value });
-  };
-
-  const handleGenreChange = (genreId: number): void => {
-    const selectedGenre = genres.find((g) => g.id === genreId);
-    setFormData({ ...formData, genre: selectedGenre });
+  const handleIsCompletedChange = (value: boolean): void => {
+    setFormData({ ...formData, isCompleted: value });
   };
 
   const isFormValid = (): boolean => {
-    return (
-      title !== "" &&
-      genre != null &&
-      year != null &&
-      year > 0 &&
-      imageUrl !== ""
-    );
+    return flightNumber !== "" && type != null && duration > 0;
   };
 
   return (
@@ -95,7 +84,9 @@ const FlightDetails: React.FC<FlightDetailsProps> = ({
 
       <Grid2 className={classes.root} container direction="column">
         <Grid2 className={classes.header}>
-          <span>{id == null ? "Add flight" : "Edit flight"}</span>
+          <span>
+            {flight?.flightNumber == null ? "Add Flight" : "Edit Flight"}
+          </span>
         </Grid2>
         <Grid2
           container
@@ -104,25 +95,23 @@ const FlightDetails: React.FC<FlightDetailsProps> = ({
           justifyContent={"flex-start"}
           spacing={3}
         >
-          <Grid2 sx={{ width: "40%" }}>
-            <img src={imageUrl} alt="None" style={{ width: "260px" }} />
-          </Grid2>
           <Grid2 sx={{ width: "50%" }}>
             <Grid2>
               <TextField
-                label={"Title"}
+                label={"Flight Number"}
                 type={"text"}
-                value={title}
-                onChange={(e) => handleTitleChange(e.target.value)}
+                value={flightNumber}
+                onChange={(e) => handleFlightNumberChange(e.target.value)}
                 className={classes.formField}
               />
             </Grid2>
             <Grid2 className={classes.formField}>
               <FormControl fullWidth>
-                <InputLabel>Genre</InputLabel>
+                <InputLabel>Type</InputLabel>
                 <Select
-                  label="Genre"
-                  onChange={(e) => handleGenreChange(Number(e.target.value))}
+                  label="Type"
+                  value={type?.id ?? ""}
+                  onChange={(e) => handleTypeChange(Number(e.target.value))}
                 >
                   {genres.map((g) => {
                     return (
@@ -136,31 +125,26 @@ const FlightDetails: React.FC<FlightDetailsProps> = ({
             </Grid2>
             <Grid2 className={classes.formField}>
               <TextField
-                label={"Year"}
-                value={year}
+                label={"Duration (minutes)"}
+                value={duration}
                 type={"number"}
-                onChange={(e) => handleYearChange(Number(e.target.value))}
+                onChange={(e) => handleDurationChange(Number(e.target.value))}
                 className={classes.formField}
               />
             </Grid2>
             <Grid2 className={classes.formField}>
-              <TextField
-                label={"Description"}
-                value={description}
-                type={"text"}
-                className={classes.formField}
-                onChange={(e) => handleDescriptionChange(e.target.value)}
-                multiline
-              />
-            </Grid2>
-            <Grid2 className={classes.formField}>
-              <TextField
-                label={"Image url"}
-                value={imageUrl}
-                type={"text"}
-                onChange={(e) => handleImageUrlChange(e.target.value)}
-                className={classes.formField}
-              />
+              <FormControl fullWidth>
+                <InputLabel>Is Completed</InputLabel>
+                <Select
+                  value={isCompleted ? "Yes" : "No"}
+                  onChange={(e) =>
+                    handleIsCompletedChange(e.target.value === "Yes")
+                  }
+                >
+                  <MenuItem value={"Yes"}>Yes</MenuItem>
+                  <MenuItem value={"No"}>No</MenuItem>
+                </Select>
+              </FormControl>
             </Grid2>
           </Grid2>
         </Grid2>

@@ -2,38 +2,23 @@ import Grid2 from "@mui/material/Grid2";
 import FlightListItem from "./flight-list-item/FlightListItem";
 import { useStyles } from "./FlightOverview.styles.ts";
 import { Button, Paper } from "@mui/material";
-import { Flight } from "../../common/models/flight.model.ts";
-import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
-import {
-  BookmarkAdded,
-  BookmarkBorder,
-  Delete,
-  Star,
-  StarOutline,
-} from "@mui/icons-material";
+import { Flight } from "../../common/models/workout.model.ts";
 
 interface FlightOverviewProps {
   flights: Flight[];
   onChange: (updated: Flight[]) => void;
-  onDeleteFlight: (id: number) => void;
+  onDeleteFlight: (id: string) => void;
   onOpenDetails: (flight?: Flight) => void;
 }
 const FlightOverview: React.FC = (props: FlightOverviewProps) => {
   const { classes } = useStyles();
   const { flights, onDeleteFlight, onChange, onOpenDetails } = props;
 
-  /* FavouritClick */
-  const toggleFavourite = (id: number): void => {
+  const toggleWatched = (id: string): void => {
     const updated = flights.map((flight) =>
-      flight.id === id ? { ...flight, isFavorite: !flight.isFavorite } : flight,
-    );
-    console.log(updated);
-    onChange(updated);
-  };
-
-  const toggleWatched = (id: number): void => {
-    const updated = flights.map((flight) =>
-      flight.id === id ? { ...flight, isWatched: !flight.isWatched } : flight,
+      flight.flightNumber === id
+        ? { ...flight, isWatched: !flight.isCompleted }
+        : flight,
     );
     console.log(updated);
     onChange(updated);
@@ -69,22 +54,15 @@ const FlightOverview: React.FC = (props: FlightOverviewProps) => {
           <Grid2 direction={"column"} width={"400px"}>
             Title
           </Grid2>
-          <Grid2 direction={"column"} width={"70px"}>
-            Year
-          </Grid2>
-          <Grid2 direction={"column"} width={"110px"}>
-            Watched
-          </Grid2>
           <Grid2 direction={"column"} width={"40px"} />
         </Grid2>
       </Grid2>
       {flights.map((flight, index) => {
         return (
           <FlightListItem
-            key={flight.id}
+            key={flight.flightNumber}
             flight={flight}
             orderNr={index + 1}
-            onFavouriteClick={toggleFavourite}
             onWatchedClick={toggleWatched}
             onDelete={onDeleteFlight}
             onEditFlight={() => onOpenDetails(flight)}

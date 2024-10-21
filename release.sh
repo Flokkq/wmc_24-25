@@ -6,7 +6,7 @@ fi
 
 if [ -z "$1" ]; then
 	echo "Please provide a tag."
-	echo "Usage: ./release.sh v[X.Y.Z]"
+	echo "Usage: ./release.sh v[X.Y.Z]-[suffix]"
 	exit
 fi
 
@@ -14,7 +14,7 @@ echo "Preparing $1..."
 msg="# managed by release.sh"
 
 # update the changelog
-git-cliff --config cliff.toml --tag "$1" > CHANGELOG.md
+git-cliff --config .cliff/default.toml --tag "$1" > CHANGELOG.md
 git add -A && git commit -m "chore(release): prepare for $1"
 git show
 
@@ -27,9 +27,23 @@ export GIT_CLIFF_TEMPLATE="\
 	{% endfor %}
 	{% endfor %}"
 
-changelog=$(git-cliff --config detailed.toml --unreleased --strip all)
+changelog=$(git-cliff --config .cliff/detailed.toml --unreleased --strip all)
 
 git tag -s -a "$1" -m "Release $1" -m "$changelog"
 git tag -v "$1"
+
+# Extract the date and suffix
+today=$(date +%d.%m.%Y)
+suffix=$(echo "$1" | cut -d'-' -f2-)
+
+# Update README.md with the new release information
+if [ -n "$suffix" ]; then
+    echo "Updating README.md with version information..."
+    release_info="[$today - $suffix](https://github.com/Flokkq/dsai_24-25/releases/tag/$1)"
+    echo "- $release_info" >> README.md
+    git add README.md
+    git commit -m "chore(docs): update README.md with release $1"
+fi
+
 echo "Done!"
 echo "Now push the commit (git push) and the tag (git push --tags)."

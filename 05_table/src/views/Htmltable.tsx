@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { useLanguage } from "../global/Language";
 import CellData from "../common/model/Cell.model";
-import { useHtmlTableStyles } from "./HtmlTable.styles"; // Import the styles
+import { useHtmlTableStyles } from "./HtmlTable.styles";
+import Cell from "./Cell";
 
-const HtmlTable = () => {
+interface HtmlTableProps {
+  rowCount: number;
+  colCount: number;
+}
+
+const HtmlTable: React.FC<HtmlTableProps> = ({ rowCount, colCount }) => {
   const { texts, theme } = useLanguage();
   const { classes } = useHtmlTableStyles();
   const [cellData, setCellData] = useState<{
@@ -30,13 +36,11 @@ const HtmlTable = () => {
     }));
   };
 
-  const getCellText = (row: number, column: string) => {
-    const cellKey = `${row}-${column}`;
-    const cell = cellData[cellKey];
-    if (cell && cell.occupied) {
-      return `${texts.row} ${row}-${column} (${texts.cellOccupied})`;
-    }
-    return "";
+  const getColumnLetters = () => {
+    // Generate column headers as 'A', 'B', 'C', etc.
+    return Array.from({ length: colCount }, (_, i) =>
+      String.fromCharCode(65 + i),
+    );
   };
 
   return (
@@ -59,30 +63,35 @@ const HtmlTable = () => {
         <thead>
           <tr>
             <th className={classes.tableHeader}></th>
-            <th className={classes.tableHeader}>A</th>
-            <th className={classes.tableHeader}>B</th>
-            <th className={classes.tableHeader}>C</th>
+            {getColumnLetters().map((col) => (
+              <th key={col} className={classes.tableHeader}>
+                {col}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
-          {[1, 2, 3].map((row) => (
-            <tr key={row}>
-              <td className={classes.tableHeader}>{`${texts.row} ${row}`}</td>
-              {["A", "B", "C"].map((col) => (
-                <td
-                  key={`${row}-${col}`}
-                  onClick={() => handleClick(row, col)}
-                  className={classes.tableCell}
-                  style={{
-                    backgroundColor:
-                      cellData[`${row}-${col}`]?.color || "transparent",
-                  }}
-                >
-                  {getCellText(row, col)}
-                </td>
-              ))}
-            </tr>
-          ))}
+          {Array.from({ length: rowCount }, (_, rowIndex) => {
+            const row = rowIndex + 1;
+            return (
+              <tr key={row}>
+                <td className={classes.tableHeader}>{`${texts.row} ${row}`}</td>
+                {getColumnLetters().map((col) => {
+                  const cellKey = `${row}-${col}`;
+                  return (
+                    <Cell
+                      key={cellKey}
+                      row={row}
+                      column={col}
+                      cellKey={cellKey}
+                      cellData={cellData}
+                      handleClick={handleClick}
+                    />
+                  );
+                })}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

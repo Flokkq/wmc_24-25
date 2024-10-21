@@ -11,7 +11,7 @@ function App() {
       </header>
 
       <main>
-        <HtmlTable />
+        <HtmlTable rowCount={5} colCount={10} />
       </main>
     </LanguageProvider>
   );

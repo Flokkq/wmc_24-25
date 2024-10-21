@@ -1,43 +1,30 @@
-import React, { useState } from "react";
-import { useLanguage } from "../global/Language";
-import CellData from "../common/model/Cell.model";
-import { useHtmlTableStyles } from "./HtmlTable.styles";
+// HtmlTable.tsx
+import React from "react";
+import { useHtmlTableStyles } from "./Table.styles";
 import Cell from "./Cell";
+import { useLanguage } from "../global/Language";
 
 interface HtmlTableProps {
   rowCount: number;
   colCount: number;
+  cellData: any;
+  handleClick: (row: number, column: string) => void;
+  selectedColor: string;
+  setSelectedColor: (color: string) => void;
 }
 
-const HtmlTable: React.FC<HtmlTableProps> = ({ rowCount, colCount }) => {
+const HtmlTable: React.FC<HtmlTableProps> = ({
+  rowCount,
+  colCount,
+  cellData,
+  handleClick,
+  selectedColor,
+  setSelectedColor,
+}) => {
   const { texts, theme } = useLanguage();
   const { classes } = useHtmlTableStyles();
-  const [cellData, setCellData] = useState<{
-    [key: string]: Omit<CellData, "text">;
-  }>({});
-  const [selectedColor, setSelectedColor] = useState<string>(
-    theme.colors.green,
-  );
-
-  const handleClick = (row: number, column: string) => {
-    const cellKey = `${row}-${column}`;
-    if (cellData[cellKey]?.occupied) {
-      alert(`${texts.cell} ${cellKey} ${texts.occupied}`);
-      return;
-    }
-    setCellData((prevState) => ({
-      ...prevState,
-      [cellKey]: {
-        row,
-        column,
-        color: selectedColor,
-        occupied: true,
-      },
-    }));
-  };
 
   const getColumnLetters = () => {
-    // Generate column headers as 'A', 'B', 'C', etc.
     return Array.from({ length: colCount }, (_, i) =>
       String.fromCharCode(65 + i),
     );

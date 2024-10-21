@@ -1,6 +1,6 @@
 import React from "react";
 import { useLanguage } from "../global/Language";
-import { useHtmlTableStyles } from "./HtmlTable.styles";
+import { useHtmlTableStyles } from "./Table.styles";
 
 interface CellProps {
   row: number;

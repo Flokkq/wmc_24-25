@@ -39,7 +39,7 @@ suffix=$(echo "$1" | cut -d'-' -f2-)
 # Update README.md with the new release information
 if [ -n "$suffix" ]; then
     echo "Updating README.md with version information..."
-    release_info="[$today - $suffix](https://github.com/Flokkq/dsai_24-25/releases/tag/$1)"
+    release_info="[$today - $suffix](https://github.com/Flokkq/wmc_24-25/releases/tag/$1)"
     echo "- $release_info" >> README.md
     git add README.md
     git commit -m "chore(docs): update README.md with release $1"

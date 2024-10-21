@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [1.5.0-table](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/compare/v1.4.1-flight..v1.5.0-table) - 2024-10-21
+
+
+
+
+### ✨ Features
+
+- *(table)* Add table - ([4f663c1](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/4f663c10b1eb73b138f813a3e7a7bbecb5357363))
+- *(table)* Add basic Language Switcher - ([77b9f00](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/77b9f00be8740688e7e3724e370c964a9219cd77))
+
+### 🚜 Refactoring
+
+- *(table)* Dynamicly configure table size and refactor cell into own component - ([d537bb6](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/d537bb6b7ffa71464228f1bc292ee17c17fc59e3))
+
+
 ## [1.4.1-flight](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/compare/v1.4.0-flight..v1.4.1-flight) - 2024-10-16
 
 
@@ -9,6 +24,10 @@
 ### ✨ Features
 
 - *(flight)* Add more information to detail view - ([c43014f](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/c43014f374e1852118ffde7a68e68906ffa499ab))
+
+### 🔧Chores
+
+- *(release)* Prepare for v1.4.1-flight - ([6543d8b](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/commit/6543d8b8bce38bac287652ef88dd177c42b9c14c))
 
 
 ## [1.4.0-flight](https://github.com/Flokkq/https://github.com/orhun/git-cliff/blob/main/cliff.toml/compare/v1.3.1-dcss..v1.4.0-flight) - 2024-10-16

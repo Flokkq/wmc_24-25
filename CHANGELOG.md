@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.1-dcss] - 2024-10-23
+
+### 🐛 Bug Fixes
+
+- *(dcss)* Fix project structure
+
+### ⚙️ Miscellaneous Tasks
+
+- *(docs)* Update README.md with release v1.6.0-dcss
+
 ## [1.6.0-dcss] - 2024-10-23
 
 ### 🚀 Features

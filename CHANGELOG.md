@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.0-dcss] - 2024-10-23
+
+### 🚀 Features
+
+- *(dcss)* Finish moviefy app
+
+### 🐛 Bug Fixes
+
+- *(repo)* Skill issues
+
+### ⚙️ Miscellaneous Tasks
+
+- *(docs)* Update README.md with release v1.5.1-table
+
 ## [1.5.1-table] - 2024-10-21
 
 ### 🚀 Features

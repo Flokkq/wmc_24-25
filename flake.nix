@@ -20,6 +20,7 @@
                 pkgs.gnupg
 
                 pkgs.nodejs_22
+                pkgs.typescript
             ];
           };
         }

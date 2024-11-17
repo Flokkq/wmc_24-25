@@ -2,15 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.6.1-dcss] - 2024-10-23
+## [.1.7.0-calculator] - 2024-11-17
+
+### 🚀 Features
+
+- *(calc)* Project for examen
 
 ### 🐛 Bug Fixes
 
 - *(dcss)* Fix project structure
 
+### 📚 Documentation
+
+- *(repo)* Update README
+
 ### ⚙️ Miscellaneous Tasks
 
 - *(docs)* Update README.md with release v1.6.0-dcss
+- *(docs)* Update README.md with release v1.6.1-dcss
+- *(repo)* Add direnv and update flake
+- *(repo)* Update flake and .gitignore
 
 ## [1.6.0-dcss] - 2024-10-23
 

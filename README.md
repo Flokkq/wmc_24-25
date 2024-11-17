@@ -8,3 +8,4 @@ Each homework has its own release marked as `vx.y.z-ho#` where # is the number o
 - [21.10.2024 - table](https://github.com/Flokkq/wmc_24-25/releases/tag/v1.5.1-table)
 - [23.10.2024 - dcss](https://github.com/Flokkq/wmc_24-25/releases/tag/v1.6.0-dcss)
 - [23.10.2024 - dcss](https://github.com/Flokkq/wmc_24-25/releases/tag/v1.6.1-dcss)
+- [17.11.2024 - calculator](https://github.com/Flokkq/wmc_24-25/releases/tag/v.1.7.0-calculator)

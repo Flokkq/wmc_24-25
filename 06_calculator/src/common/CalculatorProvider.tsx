@@ -1,9 +1,9 @@
-import {ReactNode, useState} from "react";
-import {Calculation} from "./model/calcuation.model.ts";
-import {Highscore} from "./model/high_score.model.ts";
-import {CalculatorContext} from "../global/calculator.ts";
+import { ReactNode, useState } from "react";
+import { Calculation } from "./model/calcuation.model.ts";
+import { Highscore } from "./model/high_score.model.ts";
+import { CalculatorContext } from "../global/calculator.ts";
 
-export const CalculatorProvider = ({children}: { children: ReactNode }) => {
+export const CalculatorProvider = ({ children }: { children: ReactNode }) => {
     const [calculations, setCalculations] = useState<Calculation[]>([])
     const [score, setScore] = useState<number>(0)
 
@@ -21,7 +21,7 @@ export const CalculatorProvider = ({children}: { children: ReactNode }) => {
     };
 
     const saveHighScore = (name: string) => {
-        const newScore: Highscore = {name, score};
+        const newScore: Highscore = { name, score };
         const updatedScores = [...highScores, newScore].sort((a, b) => b.score - a.score).slice(0, 5);
         setHighScores(updatedScores);
 

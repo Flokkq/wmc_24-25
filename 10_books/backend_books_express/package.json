@@ -1,0 +1,24 @@
+{
+    "name": "backend-books-express",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "node ./dist/bin/www"
+    },
+    "dependencies": {
+        "@types/debug": "^4.1.12",
+        "@types/express": "^5.0.0",
+        "@types/typescript": "^0.4.29",
+        "cookie-parser": "~1.4.4",
+        "debug": "~2.6.9",
+        "express": "~4.16.1",
+        "mongoose": "^8.9.4",
+        "morgan": "~1.9.1",
+        "ts-node-dev": "^2.0.0",
+        "typescript": "^5.7.2"
+    },
+    "devDependencies": {
+        "@types/cookie-parser": "^1.4.8",
+        "@types/morgan": "^1.9.9"
+    }
+}

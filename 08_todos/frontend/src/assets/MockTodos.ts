@@ -1,0 +1,61 @@
+import { ITodoElement } from "../models/ITodoElement";
+import { MockCategories } from "./MockCategories";
+import { Importance } from "../models/Importance";
+
+export const MockTodos: ITodoElement[] = [
+    {
+        id: 1,
+        title: "Finish Project Report",
+        description: "Complete the final report for the ongoing project.",
+        catId: 1,
+        createDate: "01.12.2024",
+        dueDate: "15.12.2024",
+        isDone: false,
+        category: MockCategories[0],
+        importance: Importance.CRITICAL,
+    },
+    {
+        id: 2,
+        title: "Grocery Shopping",
+        description: "Buy groceries for the week.",
+        catId: 2,
+        createDate: "05.12.2024",
+        dueDate: "08.12.2024",
+        isDone: false,
+        category: MockCategories[1],
+        importance: Importance.IMPORTANT,
+    },
+    {
+        id: 3,
+        title: "Doctor's Appointment",
+        description: "Annual health check-up appointment.",
+        catId: 3,
+        createDate: "03.12.2024",
+        dueDate: "07.12.2024",
+        isDone: false,
+        category: MockCategories[2],
+        importance: Importance.URGENT,
+    },
+    {
+        id: 4,
+        title: "Read New Book",
+        description: "Read the new book from the library.",
+        catId: 4,
+        createDate: "06.12.2024",
+        dueDate: "20.12.2024",
+        isDone: false,
+        category: MockCategories[3],
+        importance: Importance.UNIMPORTANT,
+    },
+    {
+        id: 5,
+        title: "Budget Planning",
+        description: "Plan the budget for the upcoming year.",
+        catId: 5,
+        createDate: "02.12.2024",
+        dueDate: "10.12.2024",
+        isDone: false,
+        category: MockCategories[4],
+        importance: Importance.IRRELEVANT,
+    },
+];

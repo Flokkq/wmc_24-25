@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7.0-virtualizedList] - 2025-04-23
+
+### 🚀 Features
+
+- *(vl)* React native core component 20
+
+### ⚙️ Miscellaneous Tasks
+
+- *(docs)* Update README.md with release v.1.7.0-calculator
+- *(lsp)* Tsls has a new formatting standard
+- *(dump)* Fucking node
+- *(repo)* Add editorconfig
+
 ## [.1.7.0-calculator] - 2024-11-17
 
 ### 🚀 Features
